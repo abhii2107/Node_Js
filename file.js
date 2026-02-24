@@ -24,13 +24,34 @@ const fs  = require("fs")
 //     }
 // })
 
-fs.appendFileSync("./test.txt" , `\n hey there ${Date.now()}`)
+// fs.appendFileSync("./test.txt" , `\n hey there ${Date.now()}`)
 
 // fs.copyFileSync("./test.txt" , "./copy.txt")
 
 // delete the file
-fs.unlinkSync("./copy.txt");
+// fs.unlinkSync("./copy.txt");
 
-// console.log(fs.statSync("./test.txt"));
+// // console.log(fs.statSync("./test.txt"));
 
-fs.mkdirSync("my-docs/a/b",{recursive:true})
+// fs.mkdirSync("my-docs/a/b",{recursive:true})
+
+// ** sync is blocking ** //
+// ** async is NON - Blocking ** //
+
+// //blocking
+// console.log('1');
+
+// const result = fs.readFileSync("test.txt","utf-8");
+// console.log(result);
+
+// console.log('2');
+
+//NON-blocking
+
+console.log('1');
+fs.readFile("test.txt","utf-8",(err,result) => {
+    console.log(result);
+});
+
+
+console.log('2');
